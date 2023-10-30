@@ -77,6 +77,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
       await patchTodo(this.props.auth.getIdToken(), todo.todoId, {
         name: todo.name,
         dueDate: todo.dueDate,
+        updatedAt: new Date().toLocaleString(),
         done: !todo.done
       })
       this.setState({
@@ -168,11 +169,14 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
                   checked={todo.done}
                 />
               </Grid.Column>
-              <Grid.Column width={10} verticalAlign="middle">
+              <Grid.Column width={7} verticalAlign="middle">
                 {todo.name}
               </Grid.Column>
               <Grid.Column width={3} floated="right">
-                {todo.dueDate}
+                Last Edited: {todo.updatedAt}
+              </Grid.Column>
+              <Grid.Column width={3} floated="right">
+                Due Date: {todo.dueDate}
               </Grid.Column>
               <Grid.Column width={1} floated="right">
                 <Button

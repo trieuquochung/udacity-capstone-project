@@ -1,7 +1,7 @@
 # TODO: Change the name of the org
 org: hungtrieuce
-app: serverless-todo-app-hung
-service: serverless-todo-app-hung
+app: capstone-app
+service: serverless-todo-app-capstone
 frameworkVersion: "3.36.0"
 
 plugins:
@@ -25,9 +25,9 @@ provider:
   environment:
     TODOS_TABLE: Todos-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    ATTACHMENT_S3_BUCKET: serverless-c4-todo-images-hungtrieuce${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: serverless-todo-images-capstone-hungtrieuce${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
-    PROJECT_NAME: serverless-todo-app-hung
+    PROJECT_NAME: serverless-todo-app-capstone
     INDEX_NAME: ${self:provider.environment.TODOS_CREATED_AT_INDEX}
 
   logs:
@@ -187,7 +187,7 @@ resources:
           Ref: ApiGatewayRestApi
 
     # TODO: Create a DynamoDB table with local secondary index and a composite key
-    TodosTable:
+    TodosTableUpdate:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:

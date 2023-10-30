@@ -14,6 +14,7 @@ The application should store TODO items, and each TODO item contains the followi
 * `createdAt` (string) - date and time when an item was created
 * `name` (string) - name of a TODO item (e.g. "Change a light bulb")
 * `dueDate` (string) - date and time by which an item should be completed
+* `updatedAt` (string) - date and time when an item was updated
 * `done` (boolean) - true if an item was completed, false otherwise
 * `attachmentUrl` (string) (optional) - a URL pointing to an image attached to a TODO item
 
@@ -23,15 +24,18 @@ You might also store an id of a user who created a TODO item.
 
 * <a href="https://manage.auth0.com/" target="_blank">Auth0 account</a>
 * <a href="https://github.com" target="_blank">GitHub account</a>
-* <a href="https://nodejs.org/en/download/package-manager/" target="_blank">NodeJS</a> version up to 12.xx 
-* Serverless 
-   * Create a <a href="https://dashboard.serverless.com/" target="_blank">Serverless account</a> user
-   * Install the Serverless Framework’s CLI  (up to VERSION=2.21.1). Refer to the <a href="https://www.serverless.com/framework/docs/getting-started/" target="_blank">official documentation</a> for more help.
+* <a href="https://nodejs.org/en/download/package-manager/" target="_blank">NodeJS</a> version up to 12.xx
+* Serverless
+  * Create a <a href="https://dashboard.serverless.com/" target="_blank">Serverless account</a> user
+  * Install the Serverless Framework’s CLI  (up to VERSION=2.21.1). Refer to the <a href="https://www.serverless.com/framework/docs/getting-started/" target="_blank">official documentation</a> for more help.
+
    ```bash
    npm install -g serverless@2.21.1
    serverless --version
    ```
-   * Login and configure serverless to use the AWS credentials 
+
+  * Login and configure serverless to use the AWS credentials
+
    ```bash
    # Login to your dashboard from the CLI. It will ask to open your browser and finish the process.
    serverless login
@@ -39,7 +43,7 @@ You might also store an id of a user who created a TODO item.
    # You need to have a pair of Access key (YOUR_ACCESS_KEY_ID and YOUR_SECRET_KEY) of an IAM user with Admin access permissions
    sls config credentials --provider aws --key YOUR_ACCESS_KEY_ID --secret YOUR_SECRET_KEY --profile serverless
    ```
-   
+
 # Functions to be implemented
 
 To implement this project, you need to implement the following functions and configure them in the `serverless.yml` file:
@@ -58,6 +62,7 @@ It should return data that looks like this:
       "createdAt": "2019-07-27T20:01:45.424Z",
       "name": "Buy milk",
       "dueDate": "2019-07-29T20:01:45.424Z",
+      "updatedAt": "2019-07-29T20:01:45.424Z",
       "done": false,
       "attachmentUrl": "http://example.com/image.png"
     },
@@ -66,6 +71,7 @@ It should return data that looks like this:
       "createdAt": "2019-07-27T20:01:45.424Z",
       "name": "Send a letter",
       "dueDate": "2019-07-29T20:01:45.424Z",
+      "updatedAt": "2019-07-29T20:01:45.424Z",
       "done": true,
       "attachmentUrl": "http://example.com/image.png"
     },
@@ -82,6 +88,7 @@ It receives a new TODO item to be created in JSON format that looks like this:
   "createdAt": "2019-07-27T20:01:45.424Z",
   "name": "Buy milk",
   "dueDate": "2019-07-29T20:01:45.424Z",
+  "updatedAt": "2019-07-29T20:01:45.424Z",
   "done": false,
   "attachmentUrl": "http://example.com/image.png"
 }
@@ -96,6 +103,7 @@ It should return a new TODO item that looks like this:
     "createdAt": "2019-07-27T20:01:45.424Z",
     "name": "Buy milk",
     "dueDate": "2019-07-29T20:01:45.424Z",
+    "updatedAt": "2019-07-29T20:01:45.424Z",
     "done": false,
     "attachmentUrl": "http://example.com/image.png"
   }
@@ -110,6 +118,7 @@ It receives an object that contains three fields that can be updated in a TODO i
 {
   "name": "Buy bread",
   "dueDate": "2019-07-29T20:01:45.424Z",
+  "updatedAt": "2019-07-29T20:01:45.424Z",
   "done": true
 }
 ```
@@ -137,7 +146,6 @@ All functions are already connected to appropriate events from API Gateway.
 An id of a user can be extracted from a JWT token passed by a client.
 
 You also need to add any necessary resources to the `resources` section of the `serverless.yml` file such as DynamoDB table and S3 bucket.
-
 
 # Frontend
 
@@ -179,7 +187,6 @@ logger.info('User was authorized', {
   key: 'value'
 })
 ```
-
 
 # Grading the submission
 
@@ -271,16 +278,13 @@ Click on the import button:
 
 ![Alt text](images/import-collection-1.png?raw=true "Image 1")
 
-
 Click on the "Choose Files":
 
 ![Alt text](images/import-collection-2.png?raw=true "Image 2")
 
-
 Select a file to import:
 
 ![Alt text](images/import-collection-3.png?raw=true "Image 3")
-
 
 Right click on the imported collection to set variables for the collection:
 

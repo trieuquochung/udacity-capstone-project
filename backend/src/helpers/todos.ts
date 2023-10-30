@@ -27,6 +27,7 @@ export async function getTodosByUserID(userId: string): Promise<TodoItem[]> {
 
 export async function updateTodosByUserID(userId: string, todoId: string, updatedTodo: UpdateTodoRequest): Promise<TodoItem> {
   logger.info(`Trigger updateTodosByUserID, userId: ${userId}`);
+  console.log('updatedTodoupdatedTodo', updatedTodo)
   return await todosAccess.updateClient(userId, todoId, updatedTodo);
 }
 

@@ -49,15 +49,18 @@ export class TodosAccess {
           todoId
         },
         UpdateExpression:
-          "set #name = :name, #dueDate = :dueDate, #done = :done",
+          "set #name = :name, #dueDate = :dueDate, #updatedAt = :updatedAt, #done = :done",
         ExpressionAttributeNames: {
           "#name": "name",
           "#dueDate": "dueDate",
+          "#updatedAt": "updatedAt",
           "#done": "done"
         },
         ExpressionAttributeValues: {
           ":name": todoUpdate.name,
           ":dueDate": todoUpdate.dueDate,
+          //":updatedAt": todoUpdate.updatedAt,
+          ":updatedAt": new Date().toLocaleString(), //fix local timezone to server timezone 
           ":done": todoUpdate.done
         },
         ReturnValues: "UPDATED_NEW",
@@ -111,9 +114,13 @@ export class TodosAccess {
         userId,
         todoId
       },
-      UpdateExpression: "set attachmentUrl = :URL",
+      UpdateExpression: "set attachmentUrl = :URL, #updatedAt = :updatedAt",
+      ExpressionAttributeNames: {
+        "#updatedAt": "updatedAt",
+      },
       ExpressionAttributeValues: {
-        ":URL": uploadUrl.split("?")[0]
+        ":URL": uploadUrl.split("?")[0],
+        ":updatedAt": new Date().toLocaleString()
       },
       ReturnValues: "UPDATED_NEW"
     }).promise();
