@@ -104,7 +104,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
     try {
       this.setState({ loadingTodos: true });
       const isToDoExist = this.validateNewTodo(this.state.newTodoName);
-      if (isToDoExist) {
+      if (isToDoExist || !this.state.newTodoName) {
         this.setState({ loadingTodos: false });
         this.onOpenNotification('existing');
       } else {
@@ -213,7 +213,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
           >
             Search all tasks by task name
           </Typography.Paragraph>
-          <Search placeholder='input search text' value={this.state.filterValue} onChange={(e) => this.onSearchAllTasks(e)} />
+          <Search placeholder='Enter task name...' value={this.state.filterValue} onChange={(e) => this.onSearchAllTasks(e)} />
         </Col>
         <Col sm={24}>
           <Typography.Paragraph
@@ -224,7 +224,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
           <Select
             mode='multiple'
             allowClear
-            placeholder='Please select'
+            placeholder='Enter task priority...'
             style={{ width: '100%' }}
             onChange={(e) => this.onFilterTaskByPrioritiesLevel(e)}
             value={this.state.prioritiesFilter}
@@ -271,7 +271,6 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
               content: 'New task',
               onClick: this.onTodoCreate
             }}
-            // fluid
             style={{ 'width': '90%' }}
             actionPosition="left"
             placeholder="Enter new task name..."
@@ -314,11 +313,14 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
                       checked={todo.done}
                     />
                   </Grid.Column>
-                  <Grid.Column width={8} verticalAlign="middle">
-                    {todo.name}
+                  <Grid.Column width={6} verticalAlign="middle">
+                    Task Name: {todo.name}
+                  </Grid.Column>
+                  <Grid.Column width={6} verticalAlign="middle">
+                    Task Updated At: {todo.updatedAt}
                   </Grid.Column>
                   <Grid.Column width={2} floated="right" verticalAlign="middle">
-                    {todo.dueDate}
+                    Task Due Date At: {todo.dueDate}
                   </Grid.Column>
                   <Grid.Column width={2} floated="right" verticalAlign="middle">
                     <Tag color={prioritiesColor[todo.priorityLevel]} style={{ margin: 0, fontSize: '1.2em', padding: '4px 12px' }}>
