@@ -313,18 +313,18 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
                       checked={todo.done}
                     />
                   </Grid.Column>
-                  <Grid.Column width={6} verticalAlign="middle">
+                  <Grid.Column width={4} verticalAlign="middle">
                     Task Name: {todo.name}
                   </Grid.Column>
-                  <Grid.Column width={6} verticalAlign="middle">
-                    Task Updated At: {todo.updatedAt}
+                  <Grid.Column width={3} verticalAlign="middle">
+                    Task Updated: {todo.updatedAt}
                   </Grid.Column>
-                  <Grid.Column width={2} floated="right" verticalAlign="middle">
-                    Task Due Date At: {todo.dueDate}
+                  <Grid.Column width={3} floated="right" verticalAlign="middle">
+                    Task Due Date: {todo.dueDate}
                   </Grid.Column>
-                  <Grid.Column width={2} floated="right" verticalAlign="middle">
+                  <Grid.Column width={3} floated="right" verticalAlign="middle">
                     <Tag color={prioritiesColor[todo.priorityLevel]} style={{ margin: 0, fontSize: '1.2em', padding: '4px 12px' }}>
-                      {todo.priorityLevel ? todo.priorityLevel : 'Medium'}
+                      Task Priority: {todo.priorityLevel ? todo.priorityLevel : 'Medium'}
                     </Tag>
                   </Grid.Column>
                   <Grid.Column width={1} floated="right" verticalAlign="middle">
