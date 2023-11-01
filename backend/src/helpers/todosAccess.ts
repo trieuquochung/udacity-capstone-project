@@ -49,19 +49,21 @@ export class TodosAccess {
           todoId
         },
         UpdateExpression:
-          "set #name = :name, #dueDate = :dueDate, #updatedAt = :updatedAt, #done = :done",
+          "set #name = :name, #dueDate = :dueDate, #updatedAt = :updatedAt, #done = :done, #priorityLevel = :priorityLevel",
         ExpressionAttributeNames: {
           "#name": "name",
           "#dueDate": "dueDate",
           "#updatedAt": "updatedAt",
-          "#done": "done"
+          "#done": "done",
+          "#priorityLevel": "priorityLevel"
         },
         ExpressionAttributeValues: {
           ":name": todoUpdate.name,
           ":dueDate": todoUpdate.dueDate,
           //":updatedAt": todoUpdate.updatedAt,
           ":updatedAt": new Date().toLocaleString(), //fix local timezone to server timezone 
-          ":done": todoUpdate.done
+          ":done": todoUpdate.done,
+          ":priorityLevel": todoUpdate.priorityLevel
         },
         ReturnValues: "UPDATED_NEW",
       }).promise();

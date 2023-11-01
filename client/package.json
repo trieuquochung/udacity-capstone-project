@@ -12,7 +12,8 @@
     "react-scripts": "^4.0.3",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.11",
+    "antd": "^5.9.4"
   },
   "devDependencies": {
     "@types/dateformat": "^3.0.1",

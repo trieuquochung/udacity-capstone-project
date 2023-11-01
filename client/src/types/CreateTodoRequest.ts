@@ -1,4 +1,5 @@
 export interface CreateTodoRequest {
   name: string
-  dueDate: string
+  dueDate: string,
+  priorityLevel: string
 }

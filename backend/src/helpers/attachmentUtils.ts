@@ -1,5 +1,3 @@
-
-// TODO: Implement the fileStogare logic
 const ATTACHMENT_S3_BUCKET = process.env.ATTACHMENT_S3_BUCKET;
 export class AttachmentUtils {
   constructor(

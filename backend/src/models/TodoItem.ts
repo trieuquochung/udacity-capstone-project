@@ -6,5 +6,6 @@ export interface TodoItem {
   dueDate: string
   updatedAt?: string
   done: boolean
-  attachmentUrl?: string
+  attachmentUrl?: string,
+  priorityLevel: string
 }

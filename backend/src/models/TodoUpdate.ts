@@ -3,4 +3,5 @@ export interface TodoUpdate {
   dueDate: string
   updatedAt: string
   done: boolean
+  priorityLevel: string
 }

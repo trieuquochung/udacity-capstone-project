@@ -9,7 +9,7 @@ const logger = createLogger("TodosAccess");
 const todosAccess = new TodosAccess();
 
 export async function createTodo(todoData: CreateTodoRequest, userId: string): Promise<TodoItem> {
-  logger.info(`Trigger createTodo, userId: ${userId}`);
+  logger.info(`Trigger createTodo, userId: ${userId}, todoData: ${todoData}`);
   return await todosAccess.createClient({
     createdAt: new Date().toISOString(),
     todoId: uuid.v4(),
